@@ -1,32 +1,18 @@
 package main
 
-func init() {
-	conf := config{
-		server: server{
-			port: ":1818",
-		},
-		db: db{
-			dbname:          "test",
-			user:            "postgres",
-			password:        "123",
-			host:            "srv.baltpolymer.com",
-			port:            "55432",
-			sslmode:         "disable",
-			connect_timeout: 10,
-		},
-	}
-}
+import "time"
 
-type config struct {
-	server
-	db
-}
+const (
+	serverDefaultPort    = "1818"
+	serverMaxHeaderBytes = 1 << 20
+	serverReadTimeout    = time.Second * 10
+	serverWriteTimeout   = time.Second * 10
 
-type server struct {
-	port string
-}
-
-type db struct {
-	dbname, user, password, host, port, sslmode string
-	connect_timeout                             uint8
-}
+	dbDbname         = "test"
+	dbUser           = "postgres"
+	dbPassword       = "123"
+	dbHost           = "srv.baltpolymer.com"
+	dbPort           = "55432"
+	dbSslmode        = "disable"
+	dbConnectTimeout = 10
+)
