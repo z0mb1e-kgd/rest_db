@@ -9,7 +9,7 @@ type Server struct {
 	httpServer *http.Server
 }
 
-func (s *Server) Run(port ...string) error {
+func (s *Server) Run(handler http.Handler, port ...string) error {
 	addrPort := serverDefaultPort
 	if len(port) > 0 {
 		addrPort = port[0]
@@ -18,6 +18,7 @@ func (s *Server) Run(port ...string) error {
 
 	s.httpServer = &http.Server{
 		Addr:           addrPort,
+		Handler:        handler,
 		MaxHeaderBytes: serverMaxHeaderBytes,
 		ReadTimeout:    serverReadTimeout,
 		WriteTimeout:   serverWriteTimeout,

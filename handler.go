@@ -17,7 +17,7 @@ func (h *Handler) InitRoutes() *gin.Engine {
 	order := router.Group("/order")
 	{
 		order.POST("/")
-		order.POST("/details?order_id=:id")
+		order.GET("/details?order_id=:order_id")
 		order.GET("/without_details")
 		order.GET("/without_invoices")
 	}
@@ -32,7 +32,7 @@ func (h *Handler) InitRoutes() *gin.Engine {
 	payment := router.Group("/payment")
 	{
 		payment.GET("/")
-		payment.GET("/details?payment_id=:id")
+		payment.GET("/details?payment_id=:payment_id")
 		payment.GET("/wrong_date")
 	}
 
@@ -40,7 +40,7 @@ func (h *Handler) InitRoutes() *gin.Engine {
 	{
 		product.GET("/")
 		product.GET("/list")
-		product.GET("/details?product_id=:id")
+		product.GET("/details?product_id=:product_id")
 		product.GET("/high_demand")
 		product.GET("/bulk")
 		product.GET("/number_in_year")
@@ -49,8 +49,8 @@ func (h *Handler) InitRoutes() *gin.Engine {
 	category := router.Group("/category")
 	{
 		category.GET("/list")
-		category.GET("/details?product_id=:id")
+		category.GET("/details?product_id=:product_id")
 		category.GET("/wrong_date")
 	}
-
+	return router
 }
