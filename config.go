@@ -1,12 +1,7 @@
 package main
 
-import "time"
-
 const (
-	serverDefaultPort    = "1818"
-	serverMaxHeaderBytes = 1 << 20
-	serverReadTimeout    = time.Second * 10
-	serverWriteTimeout   = time.Second * 10
+	serverPort = ":1818"
 
 	dbDbname         = "test"
 	dbUser           = "postgres"
