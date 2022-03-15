@@ -6,6 +6,10 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+func invoiceCreate(c *gin.Context) {
+	c.String(http.StatusOK, "Hello")
+}
+
 func invoiceExpired(c *gin.Context) {
 	c.String(http.StatusOK, "Hello")
 }

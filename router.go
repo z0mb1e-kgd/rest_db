@@ -9,14 +9,15 @@ func SetRouter() *gin.Engine {
 
 	customer := router.Group("/customer")
 	{
+		customer.GET("/list", customerList)
 		customer.GET("/without_orders", customerWithoutOrders)
 		customer.GET("/last_orders", customerLastOrders)
 	}
 
 	order := router.Group("/order")
 	{
-		order.POST("/")
-		order.GET("/details?order_id=:order_id")
+		order.POST("/", orderCreate)
+		order.GET("/details")
 		order.GET("/without_details", orderWithoutDetails)
 		order.GET("/without_invoices", orderWithoutInvoices)
 	}
@@ -30,8 +31,8 @@ func SetRouter() *gin.Engine {
 
 	payment := router.Group("/payment")
 	{
-		payment.GET("/", paymentMake)
-		payment.GET("/details?payment_id=:payment_id", paymentDetails)
+		payment.GET("/", paymentCreate)
+		payment.GET("/details", paymentDetails)
 		payment.GET("/wrong_date", paymentWrongDate)
 	}
 
@@ -39,7 +40,7 @@ func SetRouter() *gin.Engine {
 	{
 		product.GET("/")
 		product.GET("/list")
-		product.GET("/details?product_id=:product_id")
+		product.GET("/details")
 		product.GET("/high_demand")
 		product.GET("/bulk")
 		product.GET("/number_in_year")
@@ -48,7 +49,7 @@ func SetRouter() *gin.Engine {
 	category := router.Group("/category")
 	{
 		category.GET("/list")
-		category.GET("/details?product_id=:product_id")
+		category.GET("/details")
 		category.GET("/wrong_date")
 	}
 	return router

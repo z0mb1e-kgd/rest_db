@@ -6,7 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func paymentMake(c *gin.Context) {
+func paymentCreate(c *gin.Context) {
 	c.String(http.StatusOK, "Hello")
 }
 
